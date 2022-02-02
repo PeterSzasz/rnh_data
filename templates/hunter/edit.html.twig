@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Hunter{% endblock %}
+
+{% block body %}
+    <h1>Edit Hunter</h1>
+
+    {{ include('hunter/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('hunter_index') }}">back to list</a>
+
+    {{ include('hunter/_delete_form.html.twig') }}
+{% endblock %}

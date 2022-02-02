@@ -1,3 +1,115 @@
 body {
-    background-color: lightgray;
+    margin: 0;
+    background: linear-gradient(0deg, rgb(176, 177, 175) 0%, rgb(204, 211, 204) 10%, rgb(255, 255, 255) 100%) fixed;
+    background-repeat: no-repeat;
+    background-size: cover
+}
+
+.example-wrapper {
+    margin: 1em auto;
+    max-width: 800px;
+    width: 95%;
+    font: 18px/1.5 sans-serif;
+}
+
+.example-wrapper code {
+    background: #F5F5F5;
+    padding: 2px 6px;
+}
+
+.title-wrapper {
+    background: #444;
+    opacity: 90%;
+    margin: 1em auto;
+    max-width: 800px;
+    width: 95%;
+    min-height: 50px;
+    font: 18px/1.5 sans-serif;
+    text-align: center;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.menu-wrapper {
+    background: #333;
+    opacity: 80%;
+    margin: 1em auto;
+    max-width: 800px;
+    width: 95%;
+    font: 18px/1.5 sans-serif;
+    text-align: center;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.column {
+    float: left;
+    padding: 10px;
+}
+
+.column.left {
+    width: 20%;
+}
+
+.column.right {
+    width: 80%;
+}
+
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+/* bottom bar for ?information? */
+.footer {
+    background-color: #444;
+    opacity: 70%;
+    text-align: center;
+    bottom: 0;
+    height: 40px;
+    position: fixed;
+    width: 100%
+}
+
+/* a container for 50px empty vertical space */
+.vertical_space {
+    min-height: 50px
+}
+
+/* Responsive layout */
+@media screen and (max-width: 600px) {
+    .column.left, .column.right {
+        width: 100%;
+    }
+}
+
+/* google font for h1 */
+@import url('https://fonts.googleapis.com/css2?family=Road+Rage&display=swap');
+
+h1 {
+    font-family: 'Road Rage', cursive;
+}
+
+/* listing formats */
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+li {
+    float: left
+}
+
+li a {
+    display: block;
+    padding: 8px;
+}
+
+a {
+    color: rgb(48, 48, 48)
+}
+
+a:hover {
+    color: grey;
 }

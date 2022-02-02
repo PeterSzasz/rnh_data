@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hunter index{% endblock %}
+
+{% block body %}
+    <h1>Hunter index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Speed</th>
+                <th>Personality</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for hunter in hunters %}
+            <tr>
+                <td>{{ hunter.id }}</td>
+                <td>{{ hunter.name }}</td>
+                <td>{{ hunter.speed }}</td>
+                <td>{{ hunter.personality }}</td>
+                <td>
+                    <a href="{{ path('hunter_show', {'id': hunter.id}) }}">show</a>
+                    <a href="{{ path('hunter_edit', {'id': hunter.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('hunter_new') }}">Create new</a><br>
+    <a href="/">Home</a>
+{% endblock %}

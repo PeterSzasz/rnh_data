@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Rabbit index{% endblock %}
+
+{% block body %}
+    <h1>Rabbit index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Speed</th>
+                <th>Type</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for rabbit in rabbits %}
+            <tr>
+                <td>{{ rabbit.id }}</td>
+                <td>{{ rabbit.name }}</td>
+                <td>{{ rabbit.speed }}</td>
+                <td>{{ rabbit.type }}</td>
+                <td>
+                    <a href="{{ path('rabbit_show', {'id': rabbit.id}) }}">show</a>
+                    <a href="{{ path('rabbit_edit', {'id': rabbit.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('rabbit_new') }}">Create new</a>
+    <a href="/">Home</a>
+{% endblock %}
