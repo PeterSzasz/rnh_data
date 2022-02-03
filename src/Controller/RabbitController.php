@@ -52,13 +52,13 @@ class RabbitController extends AbstractController
     }
 
     #[Route('/{id}/edit', name: 'rabbit_edit', methods: ['GET','POST'])]
-    public function edit(Request $request, Rabbit $rabbit): Response
+    public function edit(Request $request, Rabbit $rabbit, ManagerRegistry $doctrine): Response
     {
         $form = $this->createForm(RabbitType::class, $rabbit);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $this->getDoctrine()->getManager()->flush();
+            $doctrine->getManager()->flush();
 
             return $this->redirectToRoute('rabbit_index', [], Response::HTTP_SEE_OTHER);
         }
@@ -70,10 +70,10 @@ class RabbitController extends AbstractController
     }
 
     #[Route('/{id}', name: 'rabbit_delete', methods: ['POST'])]
-    public function delete(Request $request, Rabbit $rabbit): Response
+    public function delete(Request $request, Rabbit $rabbit, ManagerRegistry $doctrine): Response
     {
         if ($this->isCsrfTokenValid('delete'.$rabbit->getId(), $request->request->get('_token'))) {
-            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager = $doctrine->getManager();
             $entityManager->remove($rabbit);
             $entityManager->flush();
         }

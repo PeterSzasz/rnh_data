@@ -52,13 +52,13 @@ class HunterController extends AbstractController
     }
 
     #[Route('/{id}/edit', name: 'hunter_edit', methods: ['GET','POST'])]
-    public function edit(Request $request, Hunter $hunter): Response
+    public function edit(Request $request, Hunter $hunter, ManagerRegistry $doctrine): Response
     {
         $form = $this->createForm(HunterType::class, $hunter);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $this->getDoctrine()->getManager()->flush();
+            $doctrine->getManager()->flush();
 
             return $this->redirectToRoute('hunter_index', [], Response::HTTP_SEE_OTHER);
         }
@@ -70,10 +70,10 @@ class HunterController extends AbstractController
     }
 
     #[Route('/{id}', name: 'hunter_delete', methods: ['POST'])]
-    public function delete(Request $request, Hunter $hunter): Response
+    public function delete(Request $request, Hunter $hunter, ManagerRegistry $doctrine): Response
     {
         if ($this->isCsrfTokenValid('delete'.$hunter->getId(), $request->request->get('_token'))) {
-            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager = $doctrine->getManager();
             $entityManager->remove($hunter);
             $entityManager->flush();
         }
